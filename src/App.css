@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -42,4 +42,15 @@
 }
 .refresh{
   display: inline-block;
+}
+.text_color{
+  color: white;
+}
+.type{
+  margin: 30px;
+  padding: 20px;
+  font-weight: bolder;
+  letter-spacing: 10px;
+  border-radius: 10%;
+  border: white 1px dashed;
 }
