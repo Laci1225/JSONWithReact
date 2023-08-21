@@ -5,52 +5,28 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-.refresh{
-  display: inline-block;
-}
-.text_color{
-  color: white;
+.p-center{
+  display: flex;
+  justify-content: center;
 }
 .type{
-  margin: 30px;
-  padding: 20px;
+  margin: 10px;
+  padding: 10px;
+  font-size: 10px;
   font-weight: bolder;
-  letter-spacing: 10px;
   border-radius: 10%;
   border: white 1px dashed;
+}
+.other{
+  height: 85vh;
+  overflow: auto;
+}
+.one-row-flex2{
+  max-width: 256px;
+  display: flex;
+
+}
+.one-row-flex{
+  display: flex;
+  justify-content: space-evenly;
 }

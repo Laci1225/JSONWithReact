@@ -1,30 +1,31 @@
-import { useState} from 'react'
+import {useState} from 'react'
 import './App.css'
-import axios from "axios"
 import Refresh from "./components/Refresh.jsx";
-import FactText from "./components/FactText.jsx";
-import AnimalType from "./components/AnimalType.js";
-import CreateDate from "./components/CreateDate.jsx";
-
-const httpClient = axios.create({baseURL: "https://cat-fact.herokuapp.com", headers: {}})
+import PlaneImage from "./components/PlaneImage.jsx";
+import FlightDetails from "./components/FlightDetails.jsx";
+import IsFlightSuccessful from "./components/IsFlightSuccessful.jsx";
+import FlightNumber from "./components/FlightNumber.jsx";
+import usePlaneData from "./hooks/usePlaneData.js";
 
 function App() {
-    const [text, setText] = useState();
-    const [type, setType] = useState();
-    const [createDate, setCreateDate] = useState();
     const [change, setChange] = useState(0);
+    const data = usePlaneData({index: change})
     return (
         <>
-            <div>
-                <div className="text_color">{text}</div>
-                <div className="type">{type}</div>
-                <div className="type">{createDate}</div>
-                <FactText httpClient={httpClient} setText={setText} change={change}/>
-                <AnimalType httpClient={httpClient} setType={setType} change={change}/>
-                <CreateDate httpClient={httpClient} setCreateDate={setCreateDate} change={change}/>
-                <Refresh onClick={() => {
-                    setChange(prevState => prevState + 1);
-                }}/>
+            <div className="other">
+                <div className="p-center"><FlightDetails details={data?.details}/></div>
+                <div className="p-center"><PlaneImage information={data}/></div>
+                <div className="one-row-flex">
+                    <div className="one-row-flex2">
+                        <div className="p-center"><FlightNumber information={data}/></div>
+                        <div className="p-center"><IsFlightSuccessful isSuccessful={data?.success}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="p-center"><Refresh onClick={() => {
+                setChange(Math.floor(Math.random() * 200));
+            }}/>
             </div>
         </>
     )
