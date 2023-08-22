@@ -1,18 +1,21 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import httpClient from "../api/common.js";
 import PropTypes from "prop-types";
 
 export default function usePlaneData(props) {
     const [selectedFlight, setSelectedFlight] = useState()
+    const loadData = useCallback(() => {
+        return httpClient.get("v5/launches/");
+    }, []);
     useEffect(() => {
-        httpClient.get("v5/launches/")
+        loadData()
             .then(response => {
                     const flights = response.data;
                     const selectedFlight = flights[props.index];
                     setSelectedFlight(selectedFlight)
                 }
             );
-    }, [props.index]);
+    }, [loadData, props.index]);
     return selectedFlight;
 }
 usePlaneData.propTypes = {
